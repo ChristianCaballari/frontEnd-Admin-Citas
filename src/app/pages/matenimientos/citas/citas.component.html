@@ -1,0 +1,110 @@
+
+
+
+ <!-- Buscador  de usuarios -->
+<!-- <div class="row animated fadeIn fast">
+     <div class="col-12">
+       <div class="card">
+         <div class="card-body">
+           <input 
+           type="text" 
+           class="form-control"
+           placeholder="Buscar usuario"
+           #txtTermino
+           />
+         </div>
+       </div>
+     </div>
+   </div> -->
+   
+   <!-- Loading -->
+   <div class="row animated fadeIn fast"
+   *ngIf="cargando"
+   >
+     <div class="col-12">
+       <div class="alert alert-info text-center">
+         <h4 class="alert-heading">Cargando</h4>
+         <i class="fa fa-spin fa-refresh fa-2x"></i>
+         <p class="mb-0">Por favor espere</p>
+       </div>
+     </div>
+   </div>
+   
+   <!-- Table -->
+   <div class="row animated fadeIn fast" *ngIf="!cargando">
+     <div class="col-12">
+       <div class="card">
+         <div class="card-body">
+
+
+           <div class="row">
+            <div class="col-8">
+              <h4 class="card-title">Citas</h4>
+              <h6 class="card-subtitle">Citas registrados en mi aplicación</h6>
+            </div>
+
+            <div class="col">
+              <div class="text-right">
+                <a 
+                  class="btn btn-info cursor"
+
+                  routerLink="/dashboard/citas/nuevo"
+                  >
+                  <i class="fa fa-hospital-o"></i>
+                  Crear Cita
+                </a>
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+           <div class="table-responsive">
+   
+             <table class="table table-bordered">
+               <thead class="label-themecolor text-white">
+                 <tr>
+                   <th class="w100">Titulo</th>
+                   <th class="w200">Nota</th>
+                   <th class="w200">Mensaje</th>
+                   <th class="w100">Estado</th>
+                   <th class="w200">Fecha Cita</th>
+                   <th class="w200">Fecha Creación</th>
+                   <th class="text-nowrap w100">Acciones</th>
+                 </tr>
+               </thead>
+               <tbody>
+                 <tr *ngFor="let cita of citas; let i = index">
+                   <td>{{ cita.title }}</td>
+                   <td>{{ cita.note}}</td>
+                   <td>{{ cita.message}}</td>
+                   <td>{{ cita.estado}}</td>
+                   <td>{{ cita.appointmentDate}}</td>
+                   <td>{{ cita.created}}</td>  
+                   <td class="text-nowrap text-center">
+                    <a
+                    class="cursor"
+                      data-toggle="tooltip"
+                      data-original-title="Borrar"
+                      (click)="eliminarCita(cita)"
+                    >
+                      <i class="fa fa-close text-danger size-icon"></i>
+                    </a>
+                 </td>
+                 </tr>
+               </tbody>
+             </table>        
+           </div>
+   
+           <div >
+               <button (click)="cambiarPagina(-5)" class="btn btn-info">Anteriores</button>
+               &nbsp;
+               <button (click)="cambiarPagina(5)" class="btn btn-info">Siguientes</button>
+         </div>
+         </div>
+       </div>
+     </div>
+   </div>
+   

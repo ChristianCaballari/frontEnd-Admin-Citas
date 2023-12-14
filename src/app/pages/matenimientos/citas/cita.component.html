@@ -1,0 +1,152 @@
+<div class="row">
+     <div class="col-lg-12">
+         <div class="card">
+             <div class="card-header label-themecolor text-white">
+                 <h4 class="m-b-0 text-white">Agendar Cita</h4>
+             </div>
+             <div class="card-body">
+                 <form 
+                 autocomplete="off"
+                 [formGroup]="registerForm"
+                 (ngSubmit)="crearCita()"
+                 >
+                     <div class="form-body"> 
+                         
+                         <div class="row">
+                             <div class="col-md-6">
+                                 <div class="form-group">
+                                     <label>Titulo</label>
+                                     <input type="text" class="form-control"
+                                     placeholder="Titulo"
+                                     formControlName="title"
+                                     >
+                                     <div class="col text-danger">
+                                        <p *ngIf="campoNoValido('title')">* El titulo es obligatorio</p>
+                                      </div>
+                                 </div>
+                                 
+                             </div>
+
+                         <div class="col-md-6">
+                              <div class="form-group">
+                                  <label class="control-label">Fecha Inicio</label>
+                                  <input type="datetime-local"  class="form-control" placeholder="dd/mm/yyyy"
+                                  formControlName="appointmentDate"
+                                  >
+                                  <div class="col text-danger">
+                                   <p *ngIf="campoNoValido('appointmentDate')">* La fecha es obligatorio</p>
+                                 </div>
+                              </div>
+                          </div>
+                         </div>
+
+                         <div class="row">
+                         
+                          <div class="col-md-6">
+                              <div class="form-group">
+                                  <label class="control-label">Usuario</label>
+                                  <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1"
+                                  formControlName="idUser"
+                                  >
+                                   <option [value]="item.id" *ngFor="let item of usuarios">{{item.name}} {{item.email}}</option>
+                                  </select>
+                                  <div class="col text-danger">
+                                   <p *ngIf="campoNoValido('idUser')">* El usuario es obligatorio</p>
+                                 </div>
+                              </div>
+                          </div>
+
+                          <div class="col-md-6">
+                              <div class="form-group">
+                                  <label class="control-label">Estado</label>
+                                  <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1"
+                                  formControlName="idEstado"
+                                  >
+                                   <option [value]="item.id" *ngFor="let item of estados"
+                                   >{{item.name}}</option>
+                                  </select>
+                                  <div class="col text-danger">
+                                   <p *ngIf="campoNoValido('idEstado')">* El estado es obligatorio</p>
+                                 </div>
+                              </div>
+                          </div>
+
+                          <!-- <div [formGroup]="form">
+                              <select formControlName="fieldName">
+                                <option
+                                    *ngFor="let option of options; index as i"
+                                    [selected]="option === 47"
+                                >
+                                    {{ option }}
+                                </option>
+                              </select>
+                            </div> -->
+
+
+
+
+
+
+
+
+                         
+                         </div>
+                         <!--/row-->
+                         <div class="row">
+                             <div class="col-md-6">
+                              <div class="form-group">
+                                  <label>Nota</label>
+                             <textarea 
+                               name="textarea" 
+                               id="textarea" 
+                               class="form-control"
+                               placeholder="Ingresa una nota"
+                              aria-invalid="false"
+                              formControlName="note"
+                              ></textarea>
+                              <div class="col text-danger">
+                                   <p *ngIf="campoNoValido('note')">* La nota es obligatoria</p>
+                                 </div>
+                             <div class="help-block"></div>
+                         </div>
+                    </div> 
+
+                    <div class="col-md-6">
+                         <div class="form-group">
+                             <label>Mensaje</label>
+
+                        <textarea 
+                        name="textarea" 
+                        id="textarea" 
+                        class="form-control"
+                        placeholder="Ingresa un mensaje" 
+                        aria-invalid="false"
+                        formControlName="message"
+                        ></textarea>
+                        <div class="col text-danger">
+                         <p *ngIf="campoNoValido('message')">* El mensaje es obligatorio</p>
+                       </div>
+                        <div class="help-block"></div>
+                    </div>
+               </div> 
+                         </div>
+                     </div>
+                     <div class="form-actions">
+                         <button 
+                              type="submit" 
+                              class="btn btn-info curso"
+                              ><i class="fa fa-check"></i>
+                              Guardar
+                         </button>
+                         <a class="btn btn-inverse ml-2" routerLink="/dashboard/citas">Cancel</a>
+                     </div>
+                 </form>
+             </div>
+         </div>
+     </div>
+ </div>
+
+
+ <!-- <select name="miselect" [(ngModel)]="seleccionado">
+     <option [value]="item" *ngFor="let item of lista">{{item}}</option>
+     </select> -->
